@@ -1,11 +1,14 @@
 package com.company;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
-class MainTest {
+import static org.junit.Assert.assertEquals;
 
-    @org.junit.jupiter.api.Test
-    void hello() {
+
+public class MainTest {
+
+    @Test
+    public void hello() {
         var main = new Main();
         assertEquals(main.hello(),"Hello world");
     }
