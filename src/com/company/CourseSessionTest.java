@@ -24,7 +24,7 @@ public class CourseSessionTest extends TestCase {
        assertEquals(department,"engl");
        assertEquals(number,101);
        assertEquals(0,session.getNumberOfStudents());
-        assertEquals(startDate,session.getStartDate());
+       assertEquals(startDate,session.getStartDate());
     }
 
     public void testEnrollStudents(){
