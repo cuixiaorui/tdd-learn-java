@@ -1,16 +1,21 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CourseSession {
 
     private String department;
     private int number;
-    private java.util.ArrayList<Student> allStudents;
-    public CourseSession(String department, int number) {
+    private ArrayList<Student> allStudents;
+    private Date startDate;
+    public CourseSession(String department, int number, Date startDate) {
         this.department = department;
         this.number = number;
         this.allStudents = new java.util.ArrayList<Student>();
+        this.startDate = startDate;
     }
 
 
@@ -36,5 +41,18 @@ public class CourseSession {
 
     public Student get(int index) {
         return allStudents.get(index);
+    }
+
+    public Date getEndDate() {
+
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(startDate);
+        int numberOfDays = 16 * 7 - 3;
+        calendar.add(Calendar.DAY_OF_YEAR,numberOfDays);
+        return calendar.getTime();
+    }
+
+    public Date getStartDate() {
+        return startDate;
     }
 }

@@ -2,14 +2,19 @@ package com.company;
 
 import junit.framework.TestCase;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 public class CourseSessionTest extends TestCase {
 
     private CourseSession session;
+    private Date startDate;
     public void setUp() throws Exception {
         super.setUp();
-        session = new CourseSession("engl",101);
+        int year = 103;
+        int month = 0;
+        int date = 6;
+        startDate = new Date(year,month,date);
+        session = new CourseSession("engl",101, startDate);
 
     }
 
@@ -19,6 +24,7 @@ public class CourseSessionTest extends TestCase {
        assertEquals(department,"engl");
        assertEquals(number,101);
        assertEquals(0,session.getNumberOfStudents());
+        assertEquals(startDate,session.getStartDate());
     }
 
     public void testEnrollStudents(){
@@ -38,4 +44,15 @@ public class CourseSessionTest extends TestCase {
         assertEquals(student2,session.get(1));
 
     }
+
+    public void testCourseDates(){
+        int year = 103;
+        int month = 3;
+        int date = 25;
+
+        Date sixteenWeeksOut = new Date(year,month,date);
+        assertEquals(sixteenWeeksOut,session.getEndDate());
+
+    }
+
 }

@@ -8,11 +8,8 @@ public class StudentTest extends junit.framework.TestCase{
         Student student = new Student(firstStudentName);
         assertEquals(firstStudentName,student.getName());
 
-
         final String secondStudentName = "xiaoming";
         Student secondStudent = new Student(secondStudentName);
         assertEquals(secondStudentName,secondStudent.getName());
-
-
     }
 }
