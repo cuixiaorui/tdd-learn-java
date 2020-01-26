@@ -2,7 +2,9 @@ package com.company;
 
 import junit.framework.TestCase;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CourseSessionTest extends TestCase {
 
@@ -10,12 +12,18 @@ public class CourseSessionTest extends TestCase {
     private Date startDate;
     public void setUp() throws Exception {
         super.setUp();
-        int year = 103;
-        int month = 0;
-        int date = 6;
-        startDate = new Date(year,month,date);
+        this.startDate = createDate(2003,1,6);
         session = new CourseSession("engl",101, startDate);
 
+    }
+
+    private Date createDate(int year,int month,int date) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.clear();
+        calendar.set(Calendar.YEAR,year);
+        calendar.set(Calendar.MONTH,month - 1);
+        calendar.set(Calendar.DAY_OF_MONTH,date);
+        return calendar.getTime();
     }
 
     public void testCreated(){
@@ -42,15 +50,10 @@ public class CourseSessionTest extends TestCase {
         assertEquals(2,session.getNumberOfStudents());
         assertEquals(student1,session.get(0));
         assertEquals(student2,session.get(1));
-
     }
 
     public void testCourseDates(){
-        int year = 103;
-        int month = 3;
-        int date = 25;
-
-        Date sixteenWeeksOut = new Date(year,month,date);
+        Date sixteenWeeksOut = createDate(2003,4,25);
         assertEquals(sixteenWeeksOut,session.getEndDate());
 
     }

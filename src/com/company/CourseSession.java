@@ -43,7 +43,11 @@ public class CourseSession {
 
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(startDate);
-        int numberOfDays = 16 * 7 - 3;
+
+        final int seesionLength = 16;
+        final int daysInWeek = 7;
+        final int daysFromFridaytoMonday = 3;
+        int numberOfDays = seesionLength * daysInWeek - daysFromFridaytoMonday;
         calendar.add(Calendar.DAY_OF_YEAR,numberOfDays);
         return calendar.getTime();
     }
