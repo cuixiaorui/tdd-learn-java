@@ -7,11 +7,10 @@ public class PawnTest extends junit.framework.TestCase {
         assertEquals(Pawn.COLOR_WHITE,firstPawn.getColor());
 
 
-        Pawn defuatPawn = new Pawn();
-        assertEquals(Pawn.COLOR_WHITE,defuatPawn.getColor());
+        Pawn defaultPawn = new Pawn();
+        assertEquals(Pawn.COLOR_WHITE,defaultPawn.getColor());
 
         Pawn secondPawn = new Pawn(Pawn.COLOR_BLACK);
         assertEquals(Pawn.COLOR_BLACK,secondPawn.getColor());
 
     }
-}
