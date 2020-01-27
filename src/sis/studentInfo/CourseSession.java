@@ -4,16 +4,36 @@ import java.util.*;
 
 public class CourseSession {
 
+    public static int count;
     private String department;
     private int number;
     private ArrayList<Student> allStudents;
     private Date startDate;
+    private int credits;
 
-    public CourseSession(String department, int number, Date startDate) {
+    private CourseSession(String department, int number, Date startDate) {
         this.department = department;
         this.number = number;
         this.allStudents = new java.util.ArrayList<Student>();
         this.startDate = startDate;
+        this.credits = 0;
+    }
+
+    private static void incrementCount() {
+        CourseSession.count++;
+    }
+
+    public static void resetCount() {
+        CourseSession.count = 0;
+    }
+
+    public static int getCount() {
+        return CourseSession.count;
+    }
+
+    public static CourseSession create(String engl, int number, Date startDate) {
+        CourseSession.incrementCount();
+        return new CourseSession(engl,number,startDate);
     }
 
 
@@ -30,6 +50,7 @@ public class CourseSession {
     }
 
     public void enroll(Student student) {
+        student.addCredits(credits);
         allStudents.add(student);
     }
 
@@ -58,4 +79,7 @@ public class CourseSession {
         return startDate;
     }
 
+    public void setNumberCredits(int credits) {
+        this.credits = credits;
+    }
 }

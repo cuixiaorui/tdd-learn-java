@@ -8,12 +8,12 @@ public class CourseSessionTest extends TestCase {
 
     private CourseSession session;
     private Date startDate;
+    private static int CREDITS = 3;
 
     public void setUp() throws Exception {
         super.setUp();
         this.startDate = UtilDate.createDate(2003, 1, 6);
-        session = new CourseSession("engl", 101, startDate);
-
+        session = createCourseSession();
     }
 
 
@@ -33,11 +33,13 @@ public class CourseSessionTest extends TestCase {
 
         session.enroll(student1);
 
+        assertEquals(student1.getCredits(),CREDITS);
         assertEquals(1, session.getNumberOfStudents());
         assertEquals(student1, session.get(0));
 
         session.enroll(student2);
 
+        assertEquals(student2.getCredits(),CREDITS);
         assertEquals(2, session.getNumberOfStudents());
         assertEquals(student1, session.get(0));
         assertEquals(student2, session.get(1));
@@ -46,5 +48,24 @@ public class CourseSessionTest extends TestCase {
     public void testCourseDates() {
         Date sixteenWeeksOut = UtilDate.createDate(2003, 4, 25);
         assertEquals(sixteenWeeksOut, session.getEndDate());
+    }
+
+
+    public void testCount() {
+        CourseSession.resetCount();
+
+        createCourseSession();
+        assertEquals(1, CourseSession.getCount());
+
+        createCourseSession();
+        assertEquals(2, CourseSession.getCount());
+    }
+
+
+    private CourseSession createCourseSession() {
+
+        CourseSession session = CourseSession.create("engl", 101, startDate);
+        session.setNumberCredits(CREDITS);
+        return session;
     }
 }
