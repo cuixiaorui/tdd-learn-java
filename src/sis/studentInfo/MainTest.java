@@ -1,4 +1,4 @@
-package com.company;
+package sis.studentInfo;
 
 import junit.framework.TestCase;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.company;
+package sis.studentInfo;
 
 public class Student {
     private String name;
