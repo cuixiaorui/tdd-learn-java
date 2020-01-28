@@ -8,7 +8,8 @@ public class Student {
     private String name;
     private int credits;
     private String state = "";
-    private ArrayList<String> grades= new ArrayList<String>();
+    private ArrayList<Grade> grades= new ArrayList<Grade>();
+    enum Grade{A,B,C,D,E,F};
 
     public Student(String name) {
         this.name = name;
@@ -20,8 +21,7 @@ public class Student {
     }
 
     public boolean isFullTime() {
-        return credits >= CREDITS_REQUIDRD_FOR_FULL_TIME;
-    }
+        return credits >= CREDITS_REQUIDRD_FOR_FULL_TIME; }
 
     public void addCredits(int credits) {
         this.credits += credits;
@@ -42,22 +42,22 @@ public class Student {
     public double getGpa() {
         if(grades.isEmpty())return 0.0;
         double total = 0.0;
-        for(String grade : grades)
+        for(Grade grade : grades)
         {
             total += gradePointFor(grade);
         }
         return total / grades.size();
     }
 
-    private double gradePointFor(String grade) {
-        if(grade.equals("A"))return 4;
-        if(grade.equals("B"))return 3;
-        if(grade.equals("C"))return 2;
-        if(grade.equals("D"))return 1;
+    private double gradePointFor(Grade grade) {
+        if(grade.equals(Grade.A))return 4;
+        if(grade.equals(Grade.B))return 3;
+        if(grade.equals(Grade.C))return 2;
+        if(grade.equals(Grade.D))return 1;
         return 0;
     }
 
-    public void addGrade(String grade) {
+    public void addGrade(Grade grade) {
         grades.add(grade);
     }
 }
