@@ -3,6 +3,8 @@ package sis.report;
 import sis.studentInfo.CourseSession;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class CourseReport {
 
@@ -12,6 +14,8 @@ public class CourseReport {
     }
 
     public String text() {
+        Collections.sort(sessions);
+
         StringBuffer buffer = new StringBuffer();
         for(CourseSession session : sessions )
         {

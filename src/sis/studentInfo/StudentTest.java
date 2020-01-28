@@ -3,6 +3,8 @@ package sis.studentInfo;
 
 public class StudentTest extends junit.framework.TestCase{
 
+    private static final double GRADE = 0.5;
+
     public void testCreate(){
         final String firstStudentName = "cxr";
         Student student = new Student(firstStudentName);
@@ -46,4 +48,25 @@ public class StudentTest extends junit.framework.TestCase{
         student.setState("co");
         assertTrue(student.isInState());
     }
+
+
+    public void testCalculateGpa(){
+        Student student = new Student("xiaoming");
+        assertGpa(0.0,student);
+        student.addGrade("A");
+        assertGpa(4.0,student);
+        student.addGrade("B");
+        assertGpa(3.5,student);
+        student.addGrade("C");
+        assertGpa(3.0,student);
+        student.addGrade("D");
+        assertGpa(2.5,student);
+        student.addGrade("E");
+        assertGpa(2.0,student);
+    }
+
+    private void assertGpa(double expectGpa, Student student){
+        assertEquals(expectGpa,student.getGpa(),GRADE);
+    }
 }
+

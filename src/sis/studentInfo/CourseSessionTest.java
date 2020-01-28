@@ -68,4 +68,24 @@ public class CourseSessionTest extends TestCase {
         session.setNumberCredits(CREDITS);
         return session;
     }
+
+    public void testComparable(){
+        Date date = new Date();
+        CourseSession sessionA = CourseSession.create("abc",101,date);
+        CourseSession sessionB = CourseSession.create("bcd",201,date);
+        CourseSession sessionC = CourseSession.create("abc",101,date);
+
+
+        assertEquals(sessionA.compareTo(sessionB),-1);
+        assertEquals(sessionB.compareTo(sessionA),1);
+        assertEquals(sessionA.compareTo(sessionC),0);
+
+
+        CourseSession sessionD = CourseSession.create("abc",201,date);
+
+        assertEquals(sessionD.compareTo(sessionA),1);
+    }
+
+
 }
+
