@@ -50,18 +50,9 @@ public class Student {
         double total = 0.0;
         for(Grade grade : grades)
         {
-            total += gradePointFor(grade);
+            total += this.graddingStrategy.getGradePointsFor(grade);
         }
         return total / grades.size();
-    }
-
-    private double gradePointFor(Grade grade) {
-        return this.graddingStrategy.getGradePointsFor(grade);
-//        if(grade.equals(Grade.A))return 4;
-//        if(grade.equals(Grade.B))return 3;
-//        if(grade.equals(Grade.C))return 2;
-//        if(grade.equals(Grade.D))return 1;
-//        return 0;
     }
 
     public void addGrade(Grade grade) {
