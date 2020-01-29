@@ -9,6 +9,12 @@ public class Student {
     private int credits;
     private String state = "";
     private ArrayList<Grade> grades= new ArrayList<Grade>();
+    private GraddingStrategy graddingStrategy = new RegularGraddingStrategy();
+
+    public void setGradingStrategy(GraddingStrategy graddingStrategy) {
+        this.graddingStrategy = graddingStrategy;
+    }
+
     enum Grade{A,B,C,D,E,F};
 
     public Student(String name) {
@@ -50,11 +56,12 @@ public class Student {
     }
 
     private double gradePointFor(Grade grade) {
-        if(grade.equals(Grade.A))return 4;
-        if(grade.equals(Grade.B))return 3;
-        if(grade.equals(Grade.C))return 2;
-        if(grade.equals(Grade.D))return 1;
-        return 0;
+        return this.graddingStrategy.getGradePointsFor(grade);
+//        if(grade.equals(Grade.A))return 4;
+//        if(grade.equals(Grade.B))return 3;
+//        if(grade.equals(Grade.C))return 2;
+//        if(grade.equals(Grade.D))return 1;
+//        return 0;
     }
 
     public void addGrade(Grade grade) {

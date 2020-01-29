@@ -7,14 +7,14 @@ public class CourseSession implements Comparable<CourseSession>{
     public static int count;
     private String department;
     private int number;
-    private ArrayList<Student> allStudents;
+    private List<Student> allStudents;
     private Date startDate;
     private int credits;
 
     private CourseSession(String department, int number, Date startDate) {
         this.department = department;
         this.number = number;
-        this.allStudents = new java.util.ArrayList<Student>();
+        this.allStudents = new LinkedList<Student>();
         this.startDate = startDate;
         this.credits = 0;
     }
@@ -54,7 +54,7 @@ public class CourseSession implements Comparable<CourseSession>{
         allStudents.add(student);
     }
 
-    public ArrayList<Student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return allStudents;
     }
 

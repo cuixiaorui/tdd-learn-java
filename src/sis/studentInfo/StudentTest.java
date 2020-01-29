@@ -68,5 +68,22 @@ public class StudentTest extends junit.framework.TestCase{
     private void assertGpa(double expectGpa, Student student){
         assertEquals(expectGpa,student.getGpa(),GRADE);
     }
+
+    public void testCalculateHonorsStudentGpa(){
+        Student student = new Student("xiaoming");
+        student.setGradingStrategy(new HonorsGraddingStrategy());
+
+        assertGpa(0.0,student);
+        student.addGrade(Student.Grade.A);
+        assertGpa(5.0,student);
+        student.addGrade(Student.Grade.B);
+        assertGpa(4.0,student);
+        student.addGrade(Student.Grade.C);
+        assertGpa(4.0,student);
+        student.addGrade(Student.Grade.D);
+        assertGpa(3.5,student);
+        student.addGrade(Student.Grade.E);
+        assertGpa(2.8,student);
+    }
 }
 
