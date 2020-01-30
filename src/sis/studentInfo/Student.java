@@ -9,7 +9,7 @@ public class Student {
     private int credits;
     private String state = "";
     private ArrayList<Grade> grades= new ArrayList<Grade>();
-    private GraddingStrategy graddingStrategy = new RegularGraddingStrategy();
+    private GraddingStrategy graddingStrategy = new BasicGraddingStrategy();
 
     public void setGradingStrategy(GraddingStrategy graddingStrategy) {
         this.graddingStrategy = graddingStrategy;
