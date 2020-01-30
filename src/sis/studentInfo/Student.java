@@ -15,7 +15,7 @@ public class Student {
         this.graddingStrategy = graddingStrategy;
     }
 
-    enum Grade{A,B,C,D,E};
+    public enum Grade{A,B,C,D,E};
 
     public Student(String name) {
         this.name = name;
