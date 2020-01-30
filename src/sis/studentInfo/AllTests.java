@@ -1,6 +1,7 @@
 package sis.studentInfo;
 
 import junit.framework.TestSuite;
+import sis.report.ReportCard;
 import sis.report.RosterReportTest;
 
 public class AllTests extends TestSuite {
