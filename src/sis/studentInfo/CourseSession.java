@@ -11,7 +11,7 @@ public class CourseSession implements Comparable<CourseSession>{
     private Date startDate;
     private int credits;
 
-    private CourseSession(String department, int number, Date startDate) {
+    protected CourseSession(String department, int number, Date startDate) {
         this.department = department;
         this.number = number;
         this.allStudents = new LinkedList<Student>();
@@ -65,14 +65,17 @@ public class CourseSession implements Comparable<CourseSession>{
     public Date getEndDate() {
 
         GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(startDate);
+        calendar.setTime(getStartDate());
 
-        final int seesionLength = 16;
         final int daysInWeek = 7;
         final int daysFromFridaytoMonday = 3;
-        int numberOfDays = seesionLength * daysInWeek - daysFromFridaytoMonday;
+        int numberOfDays = getSessionLength() * daysInWeek - daysFromFridaytoMonday;
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
         return calendar.getTime();
+    }
+
+    protected int getSessionLength(){
+        return 16;
     }
 
     public Date getStartDate() {

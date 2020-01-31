@@ -10,6 +10,7 @@ public class AllTests extends TestSuite {
         suite.addTestSuite(CourseSessionTest.class);
         suite.addTestSuite(RosterReportTest.class);
         suite.addTestSuite(UtilDateTest.class);
+        suite.addTestSuite(SummerCourseSessionTest.class);
         return suite;
     }
 }

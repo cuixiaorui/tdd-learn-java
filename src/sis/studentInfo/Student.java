@@ -8,14 +8,14 @@ public class Student {
     private String name;
     private int credits;
     private String state = "";
-    private ArrayList<Grade> grades = new ArrayList<Grade>();
+    private ArrayList<Grade> grades= new ArrayList<Grade>();
     private GraddingStrategy graddingStrategy = new BasicGraddingStrategy();
 
     public void setGradingStrategy(GraddingStrategy graddingStrategy) {
         this.graddingStrategy = graddingStrategy;
     }
 
-    public enum Grade {
+    public enum Grade{
         A(4),
         B(3),
         C(2),
@@ -23,17 +23,14 @@ public class Student {
         E(0);
 
         private int point;
-
-        Grade(int point) {
-            this.point = point;
+        Grade(int point){
+            this.point= point;
         }
 
-        int getPoint() {
+        int getPoint(){
             return this.point;
         }
-    }
-
-    ;
+    };
 
     public Student(String name) {
         this.name = name;
@@ -45,8 +42,7 @@ public class Student {
     }
 
     public boolean isFullTime() {
-        return credits >= CREDITS_REQUIDRD_FOR_FULL_TIME;
-    }
+        return credits >= CREDITS_REQUIDRD_FOR_FULL_TIME; }
 
     public void addCredits(int credits) {
         this.credits += credits;
@@ -60,14 +56,15 @@ public class Student {
         return this.state.toUpperCase().equals(Student.IN_STATE);
     }
 
-    public void setState(String state) {
+    public void setState(String state){
         this.state = state;
     }
 
     public double getGpa() {
-        if (grades.isEmpty()) return 0.0;
+        if(grades.isEmpty())return 0.0;
         double total = 0.0;
-        for (Grade grade : grades) {
+        for(Grade grade : grades)
+        {
             total += this.graddingStrategy.getGradePointsFor(grade);
         }
         return total / grades.size();
