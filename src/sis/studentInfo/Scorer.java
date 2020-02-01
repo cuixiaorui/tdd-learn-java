@@ -5,4 +5,12 @@ public class Scorer {
         return Integer.parseInt(input);
     }
 
+    public boolean isValid(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
