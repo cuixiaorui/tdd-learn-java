@@ -5,6 +5,7 @@ public class Scorer {
         return Integer.parseInt(input);
     }
 
+<<<<<<< HEAD
     public boolean isValid(String input) {
         try {
             Integer.parseInt(input);
@@ -13,4 +14,6 @@ public class Scorer {
             return false;
         }
     }
+=======
+>>>>>>> c1d149438a3edee88df853acf17043562b82bd40
 }

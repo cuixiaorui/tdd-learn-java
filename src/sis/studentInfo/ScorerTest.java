@@ -16,6 +16,7 @@ public class ScorerTest extends TestCase {
         }catch (NumberFormatException success){
 
         }
+<<<<<<< HEAD
     }
 
     public void testIsValid(){
@@ -25,4 +26,9 @@ public class ScorerTest extends TestCase {
     }
 
 
+=======
+
+    }
+
+>>>>>>> c1d149438a3edee88df853acf17043562b82bd40
 }
