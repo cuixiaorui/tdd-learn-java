@@ -62,4 +62,8 @@ abstract public class SessionTest extends TestCase {
         assertEquals(student2, session.get(1));
     }
 
+    public void testGetSessionLength(){
+        assertTrue(session.getSessionLength() > 0);
+    }
+
 }
