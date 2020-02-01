@@ -16,7 +16,6 @@ public class ScorerTest extends TestCase {
         }catch (NumberFormatException success){
 
         }
-<<<<<<< HEAD
     }
 
     public void testIsValid(){
@@ -24,11 +23,4 @@ public class ScorerTest extends TestCase {
         assertTrue(scorer.isValid("123"));
         assertFalse(scorer.isValid("abc"));
     }
-
-
-=======
-
-    }
-
->>>>>>> c1d149438a3edee88df853acf17043562b82bd40
 }
