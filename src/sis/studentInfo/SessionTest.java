@@ -1,7 +1,9 @@
 package sis.studentInfo;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
 abstract public class SessionTest extends TestCase {
@@ -66,4 +68,21 @@ abstract public class SessionTest extends TestCase {
         assertTrue(session.getSessionLength() > 0);
     }
 
+    public void test_session_url() throws MalformedURLException {
+        String url = "http://www.baidu.com";
+        session.setUrl(url);
+        assertEquals(url,session.getUrl().toString());
+
+    }
+
+    public void test_invalid_session_url(){
+        try{
+            String url = "";
+            session.setUrl(url);
+            fail(" exception throw MalformedURLException");
+        }catch (MalformedURLException success)
+        {
+
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package sis.studentInfo;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 abstract public class Session {
@@ -79,13 +81,22 @@ abstract public class Session {
     }
 
 
-    public int compareTo(CourseSession that){
+    public int compareTo(CourseSession that) {
 
         int compareResult = this.getDepartment().compareTo(that.getDepartment());
 
-        if(compareResult != 0){
+        if (compareResult != 0) {
             return compareResult;
         }
-        return Integer.toString(this.getNumber()).compareTo(Integer.toString( that.getNumber()));
+        return Integer.toString(this.getNumber()).compareTo(Integer.toString(that.getNumber()));
+    }
+
+    private URL url;
+    public void setUrl(String urlString) throws MalformedURLException {
+        this.url = new URL(urlString);
+    }
+
+    public URL getUrl() {
+       return url;
     }
 }
