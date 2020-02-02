@@ -92,11 +92,17 @@ abstract public class Session {
     }
 
     private URL url;
-    public void setUrl(String urlString) throws MalformedURLException {
-        this.url = new URL(urlString);
+
+    public void setUrl(String urlString) throws SessionException {
+        try {
+            this.url = new URL(urlString);
+        } catch (MalformedURLException e) {
+//            log();
+            throw new SessionException(e);
+        }
     }
 
     public URL getUrl() {
-       return url;
+        return url;
     }
 }

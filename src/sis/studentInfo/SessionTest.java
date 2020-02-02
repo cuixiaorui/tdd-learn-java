@@ -68,7 +68,7 @@ abstract public class SessionTest extends TestCase {
         assertTrue(session.getSessionLength() > 0);
     }
 
-    public void test_session_url() throws MalformedURLException {
+    public void test_session_url() throws SessionException {
         String url = "http://www.baidu.com";
         session.setUrl(url);
         assertEquals(url,session.getUrl().toString());
@@ -80,8 +80,10 @@ abstract public class SessionTest extends TestCase {
             String url = "";
             session.setUrl(url);
             fail(" exception throw MalformedURLException");
-        }catch (MalformedURLException success)
+        }catch (SessionException expectedException)
         {
+            Throwable cause = expectedException.getCause();
+            assertEquals(MalformedURLException.class,cause.getClass());
 
         }
     }
