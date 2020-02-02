@@ -84,7 +84,6 @@ abstract public class SessionTest extends TestCase {
         {
             Throwable cause = expectedException.getCause();
             assertEquals(MalformedURLException.class,cause.getClass());
-
         }
     }
 }

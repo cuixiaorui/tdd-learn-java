@@ -97,9 +97,13 @@ abstract public class Session {
         try {
             this.url = new URL(urlString);
         } catch (MalformedURLException e) {
-//            log();
+            log(e);
             throw new SessionException(e);
         }
+    }
+
+    private void log(Exception e) {
+        e.printStackTrace();
     }
 
     public URL getUrl() {
