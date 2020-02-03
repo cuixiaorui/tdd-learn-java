@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.util.Date;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 abstract public class SessionTest extends TestCase {
     abstract protected Session createSession(String department, int number, Date startDate);
@@ -85,5 +87,17 @@ abstract public class SessionTest extends TestCase {
             Throwable cause = expectedException.getCause();
             assertEquals(MalformedURLException.class,cause.getClass());
         }
+    }
+    public void test_log(){
+        Logger log = Logger.getLogger(getClass().getName());
+        Handler testHandler = new TestHandler();
+        log.addHandler(testHandler);
+        String message = "ceshi";
+        log.info(message);
+        assertEquals(message,((TestHandler) testHandler).getMessage());
+    }
+
+    public void test_getClass_getName(){
+        assertEquals("sis.studentInfo.CourseSessionTest",getClass().getName());
     }
 }
