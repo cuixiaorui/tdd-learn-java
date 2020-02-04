@@ -6,8 +6,8 @@ public class CourseSession extends Session implements Comparable<CourseSession>{
 
     public static int count;
 
-    protected CourseSession(String department, int number, Date startDate) {
-        super(department,number,startDate);
+    protected CourseSession(Course course, Date startDate) {
+        super(course,startDate);
     }
 
     private static void incrementCount() {
@@ -22,9 +22,9 @@ public class CourseSession extends Session implements Comparable<CourseSession>{
         return CourseSession.count;
     }
 
-    public static CourseSession create(String department, int number, Date startDate) {
+    public static CourseSession create(Course course, Date startDate) {
         CourseSession.incrementCount();
-        return new CourseSession(department,number,startDate);
+        return new CourseSession(course,startDate);
     }
 
     @Override

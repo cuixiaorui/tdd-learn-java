@@ -14,9 +14,9 @@ abstract public class Session {
 
     abstract protected int getSessionLength();
 
-    protected Session(String department, int number, Date startDate) {
-        this.department = department;
-        this.number = number;
+    protected Session(Course course, Date startDate) {
+        this.department = course.getDepartment();
+        this.number = course.getNumber();
         this.allStudents = new LinkedList<Student>();
         this.startDate = startDate;
         this.credits = 0;

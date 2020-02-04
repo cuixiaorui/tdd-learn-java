@@ -1,5 +1,6 @@
 package sis.report;
 
+import sis.studentInfo.Course;
 import sis.studentInfo.CourseSession;
 import sis.studentInfo.Student;
 import sis.studentInfo.UtilDate;
@@ -12,7 +13,7 @@ public class RosterReportTest extends TestCase {
 
     public void testRosterReport(){
         Date startDate = UtilDate.createDate(2003, 1, 6);
-        CourseSession session =CourseSession.create("engl",101,startDate);
+        CourseSession session =CourseSession.create(new Course("engl",101),startDate);
         session.enroll(new Student("A"));
         session.enroll(new Student("B"));
 

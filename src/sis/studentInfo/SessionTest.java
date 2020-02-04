@@ -9,7 +9,7 @@ import java.util.logging.Handler;
 import java.util.logging.Logger;
 
 abstract public class SessionTest extends TestCase {
-    abstract protected Session createSession(String department, int number, Date startDate);
+    abstract protected Session createSession(Course course, Date startDate);
 
     protected Session session;
     protected Date startDate;
@@ -18,7 +18,7 @@ abstract public class SessionTest extends TestCase {
     public void setUp() throws Exception {
         super.setUp();
         this.startDate = UtilDate.createDate(2003, 1, 6);
-        session = createSession("engl",101,startDate);
+        session = createSession(createCourse("engl",101),startDate);
     }
 
     public void testCreated() {
@@ -32,9 +32,9 @@ abstract public class SessionTest extends TestCase {
 
     public void testComparable(){
         Date date = new Date();
-        CourseSession sessionA = CourseSession.create("abc",101,date);
-        CourseSession sessionB = CourseSession.create("bcd",201,date);
-        CourseSession sessionC = CourseSession.create("abc",101,date);
+        CourseSession sessionA = CourseSession.create(createCourse("abc",101),date);
+        CourseSession sessionB = CourseSession.create(createCourse("bcd",201),date);
+        CourseSession sessionC = CourseSession.create(createCourse("abc",101),date);
 
 
         assertEquals(sessionA.compareTo(sessionB),-1);
@@ -42,7 +42,7 @@ abstract public class SessionTest extends TestCase {
         assertEquals(sessionA.compareTo(sessionC),0);
 
 
-        CourseSession sessionD = CourseSession.create("abc",201,date);
+        CourseSession sessionD = CourseSession.create(createCourse("abc",201),date);
 
         assertEquals(sessionD.compareTo(sessionA),1);
     }
@@ -99,5 +99,9 @@ abstract public class SessionTest extends TestCase {
 
     public void test_getClass_getName(){
         assertEquals("sis.studentInfo.CourseSessionTest",getClass().getName());
+    }
+
+    protected Course createCourse(String department, int number){
+        return new Course(department,number);
     }
 }

@@ -8,9 +8,10 @@ public class SummerCourseSessionTest extends TestCase {
 
     public void testEndDate() {
         Date startDate = new Date(2003, 6, 9);
-        Session session = (SummerCourseSession) SummerCourseSession.create("engl", 400, startDate);
+        Session session = (SummerCourseSession) SummerCourseSession.create(new Course("engl", 400), startDate);
 
         Date eigthWeeksout = new Date(2003, 7, 31);
         assertEquals(eigthWeeksout, session.getEndDate());
     }
+
 }

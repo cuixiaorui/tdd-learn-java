@@ -15,15 +15,16 @@ public class CourseSessionTest extends SessionTest {
     public void testCount() {
         CourseSession.resetCount();
 
-        createSession("engl", 101, startDate);
+        createSession(createCourse("engl", 101), startDate);
         assertEquals(1, CourseSession.getCount());
 
-        createSession("engl", 101, startDate);
+        createSession(createCourse("engl", 101), startDate);
         assertEquals(2, CourseSession.getCount());
     }
 
-    protected Session createSession(String department, int number, Date startDate) {
-        CourseSession session = CourseSession.create(department,number,startDate);
+
+    protected Session createSession(Course course, Date startDate) {
+        CourseSession session = CourseSession.create(course,startDate);
         session.setNumberCredits(CREDITS);
         return session;
     }
