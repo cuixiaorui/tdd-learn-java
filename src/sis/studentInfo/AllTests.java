@@ -11,6 +11,7 @@ public class AllTests extends TestSuite {
         suite.addTestSuite(RosterReportTest.class);
         suite.addTestSuite(UtilDateTest.class);
         suite.addTestSuite(SummerCourseSessionTest.class);
+        suite.addTestSuite(StudentDirectoryTest.class);
         return suite;
     }
 }

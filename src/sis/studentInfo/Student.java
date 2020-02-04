@@ -10,9 +10,22 @@ public class Student {
     private String state = "";
     private ArrayList<Grade> grades= new ArrayList<Grade>();
     private GraddingStrategy graddingStrategy = new BasicGraddingStrategy();
+    private String id;
 
     public void setGradingStrategy(GraddingStrategy graddingStrategy) {
         this.graddingStrategy = graddingStrategy;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
     public enum Grade{
