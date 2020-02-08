@@ -20,6 +20,19 @@ public class CourseTest extends TestCase {
         assertEquals(courseAPrime,courseA);
 
         assertFalse(courseA.equals(null));
+
+        assertFalse(courseA.equals("111"));
+    }
+
+    public void testHashCode(){
+        Course courseA = new Course("engl",123);
+        Course courseAPrime = new Course("engl",123);
+        Course courseB = new Course("engl",1234);
+
+        assertEquals(courseA.hashCode(),courseAPrime.hashCode());
+        assertEquals(courseA.hashCode(),courseA.hashCode());
+
+
     }
 
 }

@@ -21,7 +21,21 @@ public class Course {
     @Override
     public boolean equals(Object object){
         if(object == null)return false;
+
+        if(object.getClass() != this.getClass()){
+            return false;
+        }
+
         return this.getDepartment() == ((Course)object).getDepartment() &&
                this.getNumber() == ((Course)object).getNumber();
+    }
+
+
+    @Override
+    public int hashCode(){
+       final int hashMultiplier = 41;
+       int result = 7;
+       result = result * hashMultiplier + department.hashCode() + number;
+       return result;
     }
 }
