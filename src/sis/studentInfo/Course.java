@@ -17,4 +17,10 @@ public class Course {
     public int getNumber() {
         return number;
     }
+
+    @Override
+    public boolean equals(Object object){
+        return this.getDepartment() == ((Course)object).getDepartment() &&
+               this.getNumber() == ((Course)object).getNumber();
+    }
 }
