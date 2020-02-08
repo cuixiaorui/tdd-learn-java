@@ -20,6 +20,7 @@ public class Course {
 
     @Override
     public boolean equals(Object object){
+        if(object == null)return false;
         return this.getDepartment() == ((Course)object).getDepartment() &&
                this.getNumber() == ((Course)object).getNumber();
     }
