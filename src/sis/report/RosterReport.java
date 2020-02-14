@@ -3,39 +3,39 @@ package sis.report;
 import sis.studentInfo.CourseSession;
 import sis.studentInfo.Student;
 
+import java.io.Writer;
+import java.io.*;
+
 public class RosterReport {
     public static final String NEW_LINE = System.getProperty("line.separator");
     public static final String ROSTER_REPORT_HEADER = "Student" + NEW_LINE + "----" + NEW_LINE;
-    public static final Object ROSTER_REPORT_FOOTER = NEW_LINE + "# students = ";
+    public static final String ROSTER_REPORT_FOOTER = NEW_LINE + "# students = ";
 
     private CourseSession session;
+    private Writer writer;
 
     public RosterReport(CourseSession session) {
         this.session = session;
     }
 
-    public String getReport(){
-        StringBuffer buffer = new StringBuffer();
-        writeHeader(buffer);
-        writeBody(buffer);
-        writeFooter(buffer);
-        return buffer.toString();
+    private void writeFooter() throws IOException {
+        writer.write(ROSTER_REPORT_FOOTER + session.getAllStudents().size() + NEW_LINE);
     }
 
-    private void writeFooter(StringBuffer buffer) {
-        buffer.append(ROSTER_REPORT_FOOTER);
-        buffer.append(session.getAllStudents().size());
-        buffer.append(NEW_LINE);
-    }
-
-    private void writeBody(StringBuffer buffer) {
+    private void writeBody() throws IOException {
         for (Student student : session.getAllStudents()) {
-            buffer.append(student.getName());
-            buffer.append(NEW_LINE);
+            writer.write(student.getName() + NEW_LINE);
         }
     }
 
-    private void writeHeader(StringBuffer buffer) {
-        buffer.append(ROSTER_REPORT_HEADER);
+    private void writeHeader() throws IOException {
+        writer.write(ROSTER_REPORT_HEADER);
+    }
+
+    public void writeReport(Writer writer) throws IOException {
+        this.writer = writer;
+        writeHeader();
+        writeBody();
+        writeFooter();
     }
 }
