@@ -38,4 +38,14 @@ public class RosterReport {
         writeBody();
         writeFooter();
     }
+
+    public void writeReport(String filename) throws IOException {
+
+        Writer writer = new BufferedWriter(new FileWriter(filename));
+        try {
+            writeReport(writer);
+        } finally {
+            writer.close();
+        }
+    }
 }
